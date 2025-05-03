@@ -118,6 +118,12 @@ ifneq ($(ZEST_COMMIT), DIRTY)
 	cd $(ZEST_PATH)/mruby ; \
 	git checkout -- . ; \
 	patch -p1 -N < ../string-backtraces.diff
+	cd $(ZEST_PATH)/deps/libuv ; \
+	git checkout -- src/win/winapi.h ; \
+	patch -p1 -N -i $(PATCH_PATH)/libuv-winapi-fix-redefinition.patch
+	cd $(ZEST_PATH) ; \
+	git checkout -- build_config.rb ; \
+	patch -p1 -N -i $(PATCH_PATH)/zest-bypass-host-debug.patch
 endif
 
 #
