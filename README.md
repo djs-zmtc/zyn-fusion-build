@@ -5,6 +5,14 @@ These are the build scripts used to generate the Zyn-Fusion packages.
 These build scripts (and only these build scripts) are licensed under the
 WTFPL.
 
+> **IMPORTANT:** This is a fork of the [Zyn-Fusion-Build](https://github.com/zynaddsubfx/zyn-fusion-build) repo,
+> customized to successfully build using Ubuntu 24.04 LTS running under Windows WSL. The resulting package was
+> successfully installed and tested in FL Studio running on Windows 11. This test was only to verify that the VST
+> loaded and would play sounds from multiple patches.
+>
+> It is possible that some of the adjustments I made were unnecessary or redundant (I'm not a professional programmer) but
+> the changes I made allowed the build process to complete, so I consider that a win!
+
 ---
 
 ## Fetch repositories
@@ -12,7 +20,7 @@ WTFPL.
 You need to fetch this repo first (if you're using Windows, see below for how to do it).
 
 ```shell
-git clone https://github.com/zynaddsubfx/zyn-fusion-build zyn-fusion-build
+git clone https://github.com/djs-zmtc/zyn-fusion-build zyn-fusion-build
 ```
 ```shell
 cd zyn-fusion-build
@@ -57,7 +65,9 @@ make -f Makefile.linux.mk package
 
 > **NOTICE:** You need to run `install-linux.sh` within the built folder to install Zyn-Fusion properly, or it won't run, moreover you'll only see a black window in your host.
 
-### Building for Windows (cross-compile on Linux)
+### Building for Windows (cross-compile on Linux or WSL)
+
+> **NOTE:** This was tested using WSL2 on Windows 11 with Ubuntu 24.04 LTS.
 
 ```bash
 # Install build dependencies
@@ -91,7 +101,7 @@ Checking out the code:
 
 ```
 pacman -S git make
-git clone https://github.com/zynaddsubfx/zyn-fusion-build zyn-fusion-build
+git clone https://github.com/djs-zmtc/zyn-fusion-build zyn-fusion-build
 cd zyn-fusion-build
 ```
 
@@ -119,14 +129,14 @@ make -f Makefile.mingw64.mk package
 
 ### Moreover
 
-- **Build types (modes):** You can choose either `demo` or `release`, and `demo` is the default. Demo build will automatically mute after 10 minutes.
+- **Build types (modes):** You can choose either `demo` or `release`, and `release` is the default. Demo build will automatically mute after 10 minutes.
 
   You can explicitly specify build type:
-  
+
   ```bash
-  make MODE=release -f Makefile.<platform>.mk <target>
+  make MODE=demo -f Makefile.<platform>.mk <target>
   ```
-  
+
 - **Get help:** You can get a list of `make` targets by invoking:
 
   ```bash
