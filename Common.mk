@@ -21,6 +21,7 @@ DOWNLOAD_PATH	:= $(TOP)/download/
 DEPS_PATH	:= $(TOP)/deps/
 GIT_SRC_PATH	:= $(TOP)/src
 PREFIX_PATH		:= $(WORKPATH)/prefix
+PATCH_PATH	:= $(TOP)/patch
 
 VER := $(shell cat $(TOP)/version.txt)
 
