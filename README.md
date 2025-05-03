@@ -93,7 +93,7 @@ Any other terminal will not work.
 
 Then finish updating the Msys installation by running in the
 Mingw64 terminal: `pacman -Suy` (twice).
-See https://www.msys2.org/docs/updating/ for details and https://archlinux.org/pacman/pacman.8.html for ̀pacman`.
+See https://www.msys2.org/docs/updating/ for details and https://archlinux.org/pacman/pacman.8.html for `pacman`.
 
 #### Bootstrapping
 
