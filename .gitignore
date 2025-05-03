@@ -21,3 +21,4 @@ test.rb
 tmp/**
 build/**
 src/**
+download/**
