@@ -103,7 +103,8 @@ build_zynaddsubfx:
 		-DGuiModule=zest \
 		-DDemoMode=$(DEMO_MODE) \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DDefaultOutput=pa
+		-DDefaultOutput=pa \
+		-DWerror=OFF
 
 	$(MAKE) -C $(ZYNADDSUBFX_BUILD_DIR)
 
