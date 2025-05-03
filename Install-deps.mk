@@ -143,7 +143,7 @@ endif
 $(DEPS_PATH)/fftw: prepare_workspace
 ifeq (, $(wildcard $(DOWNLOAD_PATH)/fftw*.tar.gz))
 	# File doesn't exist. Must redownload.
-	wget http://www.fftw.org/fftw-3.3.4.tar.gz -O $(DOWNLOAD_PATH)/fftw-3.3.4.tar.gz
+	wget http://www.fftw.org/fftw-3.3.10.tar.gz -O $(DOWNLOAD_PATH)/fftw-3.3.10.tar.gz
 endif
 	mkdir -p $@
 	$(TAR_UNPACK)  $(DOWNLOAD_PATH)/fftw*tar.gz -C $@ --skip-old-files
