@@ -73,10 +73,10 @@ make -f Makefile.linux.mk package
 # Install build dependencies
 make -f Makefile.windows.mk install_deps
 
-# Start building
-PARALLEL=1 make -f Makefile.windows.mk all
+# Start building (creates a log file in the ./tmp folder of the build process)
+PARALLEL=1 make -f Makefile.windows.mk all 2>&1 | tee -a ./tmp/compilelog-$(date "+%Y%m%dT%H%M").txt
 
-# Or, you can also build a specific component,
+# OR, you can also build a specific component,
 # then finally use `package` to get a package file
 PARALLEL=1 make -f Makefile.windows.mk zynaddsubfx
 PARALLEL=1 make -f Makefile.windows.mk zest
