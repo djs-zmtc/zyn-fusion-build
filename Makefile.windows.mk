@@ -5,7 +5,7 @@ OS		:= windows
 
 # Cross-compile dependencies
 ARCH_PACMAN_DEPS	+= mingw-w64-toolchain
-APT_DEPS			+= g++-mingw-w64-x86-64
+APT_DEPS			+= g++-mingw-w64 gcc-mingw-w64 mingw-w64 mingw-w64-tools gcc-multilib
 
 # Cross-compile specific compilers
 HOST	:= x86_64-w64-mingw32
