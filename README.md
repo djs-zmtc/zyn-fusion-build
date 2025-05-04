@@ -45,6 +45,8 @@ Makefiles will automatically download ZynAddSubFX and Zest, as well as their dep
 - `./build/zyn-fusion`: Ready-to-use Zyn-Fusion files. You can directly use them as you wish, or copy this folder into your DAW's search-path.
 - `./build/zyn-fusion/zyn-fusion-*.{tar.gz|zip}`:  Compressed package(s) ready for distribution.
 
+-----
+
 ### Building for Linux (native build)
 
 #### Generic
@@ -65,6 +67,8 @@ make -f Makefile.linux.mk package
 
 > **NOTICE:** You need to run `install-linux.sh` within the built folder to install Zyn-Fusion properly, or it won't run, moreover you'll only see a black window in your host.
 
+-----
+
 ### Building for Windows (cross-compile on Linux or WSL)
 
 > **NOTE:** This was tested using WSL2 on Windows 11 with Ubuntu 24.04 LTS.
@@ -83,7 +87,29 @@ PARALLEL=1 make -f Makefile.windows.mk zest
 PARALLEL=1 make -f Makefile.windows.mk package
 ```
 
+-----
+
+### Building for Windows (cross-compile using Docker)
+
+Make sure you can run docker commands from the `bash` shell:
+
+```bash
+docker version
+```
+
+Run the `build-windows.sh` script:
+
+```bash
+bash ./build-windows.sh
+```
+
+The resulting release ZIP will be placed in the root of the repo.
+
+-----
+
 ### Building for Windows (native build via Msys2)
+
+> **IMPORTANT:** At the time of this fork, this method doesn't seem to work!
 
 #### Msys2 installation
 
@@ -126,6 +152,8 @@ make -f Makefile.mingw64.mk zynaddsubfx
 make -f Makefile.mingw64.mk zest
 make -f Makefile.mingw64.mk package
 ```
+
+-----
 
 ### Moreover
 
