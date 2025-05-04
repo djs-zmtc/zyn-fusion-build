@@ -100,7 +100,7 @@ docker version
 Run the `build-windows.sh` script:
 
 ```bash
-bash ./build-windows.sh
+bash ./docker-builders/build-windows.sh
 ```
 
 The resulting release ZIP will be placed in the root of the repo.
