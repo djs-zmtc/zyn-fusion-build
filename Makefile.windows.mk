@@ -92,6 +92,12 @@ get_zynaddsubfx: fetch_zynaddsubfx build_zynaddsubfx_deps
 build_zynaddsubfx:
 	$(info ========== Building ZynAddSubFX in $(MODE) mode ==========)
 
+ifneq ($(ZYNADDSUBFX_COMMIT), DIRTY)
+	cd $(ZYNADDSUBFX_PATH) ; \
+	git checkout -- . ; \
+	patch -p1 -N -i $(PATCH_PATH)/zynaddsubfx-middleware-win32-fix.patch
+endif
+
 	rm -rf $(ZYNADDSUBFX_BUILD_DIR)
 	mkdir -p $(ZYNADDSUBFX_BUILD_DIR)
 
