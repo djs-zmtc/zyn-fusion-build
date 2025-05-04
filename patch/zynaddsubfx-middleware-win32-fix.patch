@@ -1,0 +1,13 @@
+diff --git a/src/Misc/MiddleWare.cpp b/src/Misc/MiddleWare.cpp
+index 2f55aff04..33e9b3d40 100644
+--- a/src/Misc/MiddleWare.cpp
++++ b/src/Misc/MiddleWare.cpp
+@@ -616,7 +616,7 @@ class MiddleWareImpl
+
+         Part *p = alloc.get();
+ #else
+-        Part *p = new Part(*master->memory, synth, master->time,
++        Part *p = new Part(*master->memory, synth, master->time, master->sync,
+                 config->cfg.GzipCompression,
+                 config->cfg.Interpolation,
+                 &master->microtonal, master->fft);

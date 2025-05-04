@@ -27,7 +27,8 @@ VER := $(shell cat $(TOP)/version.txt)
 
 # Repositories
 # You can replace them with your own fork.
-ZYNADDSUBFX_REPO_URL	:= https://github.com/djs-zmtc/zynaddsubfx
+# ZYNADDSUBFX_REPO_URL	:= https://github.com/djs-zmtc/zynaddsubfx
+ZYNADDSUBFX_REPO_URL	:= https://github.com/zynaddsubfx/zynaddsubfx
 ZEST_REPO_URL		:= https://github.com/mruby-zest/mruby-zest-build
 
 # Branches to clone.
