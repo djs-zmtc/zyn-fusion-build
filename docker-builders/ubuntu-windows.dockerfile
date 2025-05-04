@@ -8,12 +8,14 @@ RUN apt-get install -y make
 #make
 RUN apt-get install -y sudo
 
-#Build dependencies 
+#Build dependencies
 COPY ./version.txt /z/
 COPY ./Common.mk /z/
 COPY ./Install-deps.mk /z/
 COPY ./Makefile.windows.mk /z/
 COPY ./z/windows-build.cmake /z/z/
+COPY ./patch/libuv-winapi-fix-redefinition.patch /z/patch/
+COPY ./patch/zest-bypass-host-debug.patch /z/patch/
 
 WORKDIR z
 RUN  make -f Makefile.windows.mk install_deps
