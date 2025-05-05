@@ -5,7 +5,8 @@ These are the build scripts used to generate the Zyn-Fusion packages.
 These build scripts (and only these build scripts) are licensed under the
 WTFPL.
 
-> **[!IMPORTANT]:** This is a fork of the [Zyn-Fusion-Build](https://github.com/zynaddsubfx/zyn-fusion-build) repo,
+> [!IMPORTANT]
+> This is a fork of the [Zyn-Fusion-Build](https://github.com/zynaddsubfx/zyn-fusion-build) repo,
 > customized to successfully build using Ubuntu 24.04 LTS running under Windows WSL. The resulting package was
 > successfully installed and tested in FL Studio running on Windows 11. This test was only to verify that the VST
 > loaded and would play sounds from multiple patches.
@@ -13,7 +14,9 @@ WTFPL.
 > It is possible that some of the adjustments I made were unnecessary or redundant (I'm not a professional programmer) but
 > the changes I made allowed the build process to complete, so I consider that a win!
 
-> **[!IMPORTANT]:** The sections below referring to [Linux (native build)](#building-for-linux-native-build) and [Windows (native build via Msys2)](#building-for-windows-native-build-via-msys2) have
+> [!IMPORTANT]
+> The sections below referring to [Linux (native build)](#building-for-linux-native-build) and
+> [Windows (native build via Msys2)](#building-for-windows-native-build-via-msys2) have
 > **NOT** been altered from the `master` repo! This fork was created specifically for building using WSL (and optionally, Docker), and only
 > the files associated with this build method have been modified (and test).
 
