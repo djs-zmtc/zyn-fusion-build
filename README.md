@@ -5,26 +5,36 @@ These are the build scripts used to generate the Zyn-Fusion packages.
 These build scripts (and only these build scripts) are licensed under the
 WTFPL.
 
+-----
+
 > [!IMPORTANT]
 > This is a fork of the [Zyn-Fusion-Build](https://github.com/zynaddsubfx/zyn-fusion-build) repo,
-> customized to successfully build using Ubuntu 24.04 LTS running under Windows WSL. The resulting package was
-> successfully installed and tested in FL Studio running on Windows 11. This test was only to verify that the VST
-> loaded and would play sounds from multiple patches.
+> customized to successfully build using Ubuntu 24.04 LTS running under Windows WSL. The resulting
+> package was successfully installed and tested in FL Studio running on Windows 11. This test was
+> only to verify that the VST loaded and would play sounds from multiple patches.
 >
-> It is possible that some of the adjustments I made were unnecessary or redundant (I'm not a professional programmer) but
-> the changes I made allowed the build process to complete, so I consider that a win!
+> It is possible that some of the adjustments I made were unnecessary or redundant (I'm not a
+> professional programmer) but the changes I made allowed the build process to complete, so I
+> consider that a win!
+
+-----
 
 > [!IMPORTANT]
 > The sections below referring to [Linux (native build)](#building-for-linux-native-build) and
 > [Windows (native build via Msys2)](#building-for-windows-native-build-via-msys2) have
-> **NOT** been altered from the `master` repo! This fork was created specifically for building using WSL (and optionally, Docker), and only
-> the files associated with this build method have been modified (and test).
+> **NOT** been altered from the `master` repo! This fork was created specifically for building
+> using WSL (and optionally, Docker), and only the files associated with this build method have
+> been modified (and tested).
 
----
+-----
 
 ## Fetch repositories
 
-You need to fetch this repo first (if you're using Windows, see below for how to do it).
+> [!NOTE]
+> The build process is designed to work from a `bash` shell. You will need to have a functional
+> `bash` shell (using WSL on Windows, a native Linux installation, or the `Msys2` `Mingw64` terminal).
+
+You need to fetch this repo first. In a `bash` prompt:
 
 ```shell
 git clone https://github.com/djs-zmtc/zyn-fusion-build zyn-fusion-build
@@ -39,9 +49,9 @@ Zyn-Fusion now uses Makefile. Each platform has a corresponding Makefile (`Makef
 
 | Makefile              | Target platform (Where Zyn runs) | Host platform (where compilers run) |
 | --------------------- | -------------------------------- | ----------------------------------- |
-| `Makefile.linux.mk`   | Linux (native build)             | Linux                               |
-| `Makefile.windows.mk` | Windows                          | Linux **(cross compile)**           |
-| `Makefile.mingw64.mk` | Windows                          | Msys2 Mingw-w64 64 bit              |
+| `Makefile.windows.mk` | [Windows](#building-for-windows-cross-compile-on-linux-or-wsl) | [Linux **(cross compile)**](#building-for-windows-cross-compile-on-linux-or-wsl) |
+| `Makefile.mingw64.mk` | [Windows](#building-for-windows-native-build-via-msys2) | [Msys2 Mingw-w64 64 bit](#building-for-windows-native-build-via-msys2) |
+| `Makefile.linux.mk`   | [Linux (native build)](#building-for-linux-native-build) | [Linux](#building-for-linux-native-build)  |
 
 Since they are not in the default Makefile name, you need to explicitly specify them via parameter`-f` when invoking `make`.
 
@@ -54,31 +64,11 @@ Makefiles will automatically download ZynAddSubFX and Zest, as well as their dep
 
 -----
 
-### Building for Linux (native build)
-
-#### Generic
-
-```bash
-# Install build dependencies
-make -f Makefile.linux.mk install_deps
-
-# Start building
-PARALLEL=1 make -f Makefile.linux.mk all
-
-# Or, you can also build a specific component,
-# then finally use `package` to get a package file
-PARALLEL=1 make -f Makefile.linux.mk zynaddsubfx
-PARALLEL=1 make -f Makefile.linux.mk zest
-make -f Makefile.linux.mk package
-```
-
-> **NOTICE:** You need to run `install-linux.sh` within the built folder to install Zyn-Fusion properly, or it won't run, moreover you'll only see a black window in your host.
-
------
-
 ### Building for Windows (cross-compile on Linux or WSL)
 
-> **NOTE:** This was tested using WSL2 on Windows 11 with Ubuntu 24.04 LTS.
+> [!NOTE]
+> This was tested using WSL2 on Windows 11 with Ubuntu 24.04 LTS. I have **NOT** tested
+> this on a native Linux installation so I don't know if that will work properly.
 
 ```bash
 # Install build dependencies
@@ -98,6 +88,9 @@ PARALLEL=1 make -f Makefile.windows.mk package
 
 ### Building for Windows (cross-compile using Docker)
 
+> [!NOTE]
+> This was tested using WSL2 on Windows 11 with Ubuntu 24.04 LTS and Windows Docker Desktop installed and running.
+
 Make sure you can run docker commands from the `bash` shell:
 
 ```bash
@@ -116,7 +109,8 @@ The resulting release ZIP will be placed in the root of the repo.
 
 ### Building for Windows (native build via Msys2)
 
-> **IMPORTANT:** At the time of this fork, this method doesn't seem to work!
+> [!IMPORTANT]
+> At the time of this fork, this method doesn't seem to work!
 
 #### Msys2 installation
 
@@ -159,6 +153,31 @@ make -f Makefile.mingw64.mk zynaddsubfx
 make -f Makefile.mingw64.mk zest
 make -f Makefile.mingw64.mk package
 ```
+
+-----
+
+### Building for Linux (native build)
+
+> [!NOTE]
+> No changes have been made to the `Makefile.linux.mk` nor have I tested if this works on a native Linux installation.
+
+#### Generic
+
+```bash
+# Install build dependencies
+make -f Makefile.linux.mk install_deps
+
+# Start building
+PARALLEL=1 make -f Makefile.linux.mk all
+
+# Or, you can also build a specific component,
+# then finally use `package` to get a package file
+PARALLEL=1 make -f Makefile.linux.mk zynaddsubfx
+PARALLEL=1 make -f Makefile.linux.mk zest
+make -f Makefile.linux.mk package
+```
+
+> **NOTICE:** You need to run `install-linux.sh` within the built folder to install Zyn-Fusion properly, or it won't run, moreover you'll only see a black window in your host.
 
 -----
 
