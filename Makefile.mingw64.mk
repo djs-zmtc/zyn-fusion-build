@@ -99,6 +99,12 @@ ifneq ($(ZEST_COMMIT), DIRTY)
 	cd $(ZEST_PATH)/mruby ; \
 	git checkout -- . ; \
 	patch -p1 -N < ../string-backtraces.diff
+	cd $(ZEST_PATH)/deps/libuv ; \
+	git checkout -- src/win/winapi.h ; \
+	patch -p1 -N -i $(PATCH_PATH)/libuv-winapi-fix-redefinition.patch
+	cd $(ZEST_PATH) ; \
+	git checkout -- build_config.rb ; \
+	patch -p1 -N -i $(PATCH_PATH)/zest-bypass-host-debug.patch
 endif
 
 
@@ -107,8 +113,8 @@ endif
 	cd $(ZEST_PATH)/deps/libuv ; \
 	git checkout -- . ; \
 	patch -p1 -N < $(TOP)/0001-build-fix-build-failures-with-MinGW-new-headers.patch
-	
-	
+
+
 setup_zest: fetch_zest apply_mruby_patches setup_libuv
 	cd $(ZEST_PATH) ; \
 	ruby rebuild-fcache.rb
