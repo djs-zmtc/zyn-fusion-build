@@ -56,6 +56,7 @@ build_fftw: $(DEPS_PATH)/fftw
 
 build_liblo: $(DEPS_PATH)/liblo
 	cd $< ; \
+	patch -p1 -N -i $(PATCH_PATH)/fix-liblo-mingw64.patch ; \
 	./configure --host=$(HOST) --prefix=$(PREFIX_PATH) --disable-shared --enable-static
 
 	$(MAKE) -C $<
