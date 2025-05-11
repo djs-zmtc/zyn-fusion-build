@@ -30,7 +30,7 @@ build_fftw: $(DEPS_PATH)/fftw
 
 build_libio: $(DEPS_PATH)/liblo
 	cd $< ; \
-	patch -p1 -N -i $(PATCH_PATH)/fix-liblo-mingw64.patch ; \
+	patch -p1 -N -i $(PATCH_PATH)/fix-liblo-mingw64-configure.patch ; \
 	./configure --prefix=$(PREFIX_PATH) --disable-shared --enable-static
 
 	$(MAKE) -C $<
